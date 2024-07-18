@@ -50,7 +50,7 @@ const CabinRow = ({ cabin }) => {
     maxCapacity,
     regularPrice,
     discount,
-    imageURL,
+    image,
   } = cabin;
 
   const queryClient = useQueryClient();
@@ -69,7 +69,7 @@ const CabinRow = ({ cabin }) => {
 
   return (
     <TableRow role="row">
-      <Img src={imageURL} />
+      <Img src={image} />
       <Cabin>{name}</Cabin>
       <div>Fits up to {maxCapacity} guests</div>
       <Price>{formatCurrency(regularPrice)}</Price>
