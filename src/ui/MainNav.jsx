@@ -84,7 +84,7 @@ const MainNav = () => {
         <li>
           <StyledNavLink to="/settings">
             <HiOutlineCog6Tooth />
-            <span>Home</span>
+            <span>Settings</span>
           </StyledNavLink>
         </li>
       </NavList>
