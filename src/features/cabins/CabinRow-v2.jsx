@@ -74,38 +74,26 @@ const CabinRow = ({ cabin }) => {
         <span>&mdash;</span>
       )}
       <div>
-        {/* <button disabled={isCreating} onClick={handleCopyForm}>
+        <button disabled={isCreating} onClick={handleCopyForm}>
           <HiSquare2Stack />
-        </button> */}
+        </button>
         {/* Use Modal */}
         <Modal>
-          {/* Menu */}
-          <Menus.Menu>
-            <Menus.Toggle id={cabinId} />
-
-            <Menus.List id={cabinId}>
-              {/* Duplicate */}
-              <Menus.Button icon={<HiSquare2Stack />} onClick={handleCopyForm}>
-                Duplicate
-              </Menus.Button>
-
-              {/* Edit */}
-              <Modal.Open opens="edit">
-                <Menus.Button icon={<HiPencil />}>Edit</Menus.Button>
-              </Modal.Open>
-
-              {/* Delete */}
-              <Modal.Open opens="delete">
-                <Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
-              </Modal.Open>
-            </Menus.List>
-          </Menus.Menu>
-
+          <Modal.Open opens="edit">
+            <button>
+              <HiPencil />
+            </button>
+          </Modal.Open>
           <Modal.Window name="edit">
             <CreateCabinForm cabinToEdit={cabin} />
           </Modal.Window>
 
           {/* Delete with Modal confirm */}
+          <Modal.Open opens="delete">
+            <button>
+              <HiTrash />
+            </button>
+          </Modal.Open>
           <Modal.Window name="delete">
             <ConfirmDelete
               resourceName="cabins"
@@ -114,6 +102,24 @@ const CabinRow = ({ cabin }) => {
             />
           </Modal.Window>
         </Modal>
+
+        {/* Menu */}
+        <Menus.Menu>
+          <Menus.Toggle id={cabinId} />
+
+          <Menus.List id={cabinId}>
+            {/* Duplicate */}
+            <Menus.Button icon={<HiSquare2Stack />} onClick={handleCopyForm}>
+              Duplicate
+            </Menus.Button>
+
+            {/* Edit */}
+            <Menus.Button icon={<HiPencil />}>Edit</Menus.Button>
+
+            {/* Delete */}
+            <Menus.Button icon={<HiTrash />}>Delete</Menus.Button>
+          </Menus.List>
+        </Menus.Menu>
       </div>
     </Table.Row>
   );
