@@ -4,13 +4,45 @@ import Menus from '../../ui/Menus';
 import Empty from '../../ui/Empty';
 import { useBookings } from './useBookings';
 import Spinner from '../../ui/Spinner';
+// import { useSearchParams } from 'react-router-dom';
 
 function BookingTable() {
   const { bookings, isLoading } = useBookings();
+  // const [searchParams] = useSearchParams();
 
   if (isLoading) return <Spinner />;
 
   if (!bookings.length) return <Empty resourceName="Bookings" />;
+
+  // CLIENT SIDE FILTERED AND SORTING ***************************************
+  // // 1. FILTERED
+  // const filteredValue = searchParams.get('status') || 'all';
+  // let filteredBookings;
+
+  // if (filteredValue === 'all') filteredBookings = bookings;
+  // if (filteredValue === 'checked-out')
+  //   filteredBookings = bookings.filter(
+  //     (booking) => booking.status === 'checked-out'
+  //   );
+  // if (filteredValue === 'checked-in')
+  //   filteredBookings = bookings.filter(
+  //     (booking) => booking.status === 'checked-in'
+  //   );
+  // if (filteredValue === 'unconfirmed')
+  //   filteredBookings = bookings.filter(
+  //     (booking) => booking.status === 'unconfirmed'
+  //   );
+
+  // // 2. SORTING
+  // const sortBy = searchParams.get('sortBy') || 'startDate-asc';
+  // const [field, direction] = sortBy.split('-');
+
+  // // modify directions
+  // const modifier = direction === 'asc' ? 1 : -1;
+  // // Sorted bookings
+  // const sortedBookings = filteredBookings.sort(
+  //   (a, b) => (a[field] - b[field]) * modifier
+  // );
 
   return (
     <Menus>
