@@ -3,7 +3,6 @@ import { getToday } from '../utils/helpers';
 import supabase from './supabase';
 
 export async function getBookings({ filter, sortBy, page }) {
-  console.log(sortBy);
   let query = supabase
     .from('bookings')
     .select(
@@ -41,7 +40,7 @@ export async function getBookings({ filter, sortBy, page }) {
 export async function getBooking(id) {
   const { data, error } = await supabase
     .from('bookings')
-    .select('*, cabins(*), guests(*)')
+    .select('*, cabins:cabinId(*), guests(*)')
     .eq('id', id)
     .single();
 
