@@ -87,6 +87,8 @@ function Toggle({ id }) {
   const { open, close, openId, setPosition } = useContext(MenuContext);
 
   function handleOpen(e) {
+    e.stopPropagation();
+
     const rect = e.target.closest('button').getBoundingClientRect();
 
     setPosition({
@@ -106,12 +108,15 @@ function Toggle({ id }) {
 
 function List({ children, id }) {
   const { openId, position, close } = useContext(MenuContext);
-  // const { ref } = useOutsideClick(close);
+
+  const { ref } = useOutsideClick(close, false);
 
   if (openId !== id) return null;
 
   return createPortal(
-    <StyledList position={position}>{children}</StyledList>,
+    <StyledList position={position} ref={ref}>
+      {children}
+    </StyledList>,
     document.getElementById('overlay-2')
   );
 }

@@ -61,7 +61,7 @@ function CheckinBooking() {
   }
 
   const optionalBreakfastPrice =
-    settings.breakfastPrice * numNights * numGuests;
+    settings?.breakfastPrice * numNights * numGuests;
 
   if (isLoading || isLoadingSettings) return <Spinner />;
 
