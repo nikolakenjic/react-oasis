@@ -85,7 +85,11 @@ const CabinRow = ({ cabin }) => {
 
             <Menus.List id={cabinId}>
               {/* Duplicate */}
-              <Menus.Button icon={<HiSquare2Stack />} onClick={handleCopyForm}>
+              <Menus.Button
+                icon={<HiSquare2Stack />}
+                onClick={handleCopyForm}
+                disabled={isCreating}
+              >
                 Duplicate
               </Menus.Button>
 
